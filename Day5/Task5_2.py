@@ -11,51 +11,71 @@ stack_8 = ["H", "P", "F","R"]
 stack_9 = ["Z", "S", "M","B", "L", "N", "P", "H"]
 
 def move_cargo(amount, root, destination):
-    for _ in range(0,int(amount)):
-        tmp = pop_from_stack(root)
-        append_to_stack(destination, tmp)
+    tmp = pop_from_stack(amount, root)
+    append_to_stack(destination, tmp)
 
-def pop_from_stack(number):
-    n = int(number)
+def pop_from_stack(number, stack):
+    n = int(stack)
+    number = int(number)
+    cargo = None
     if n == 1:
-        return stack_1.pop()
+         cargo = stack_1[-number:]
+         del stack_1[-number:]
     elif n== 2:
-        return stack_2.pop()
+        cargo = stack_2[-number:]
+        del stack_2[-number:]
     elif n == 3:
-        return stack_3.pop()
+        cargo = stack_3[-number:]
+        del stack_3[-number:]
     elif n == 4:
-        return stack_4.pop()
+        cargo = stack_4[-number:]
+        del stack_4[-number:]
     elif n == 5:
-        return stack_5.pop()
+        cargo = stack_5[-number:]
+        del stack_5[-number:]
     elif n == 6:
-        return stack_6.pop()
+        cargo = stack_6[-number:]
+        del stack_6[-number:]
     elif n == 7:
-        return stack_7.pop()
+        cargo = stack_7[-number:]
+        del stack_7[-number:]
     elif n == 8:
-        return stack_8.pop()
+        cargo = stack_8[-number:]
+        del stack_8[-number:]
     elif n == 9:
-        return stack_9.pop()
+        cargo = stack_9[-number:]
+        del stack_9[-number:]
+    return cargo
 
 def append_to_stack(number, cargo):
     n = int(number)
     if n == 1:
-        stack_1.append(cargo)
+        for item in cargo:
+            stack_1.append(item)
     elif n== 2:
-        stack_2.append(cargo)
+        for item in cargo:
+            stack_2.append(item)
     elif n == 3:
-        stack_3.append(cargo)
+        for item in cargo:
+            stack_3.append(item)
     elif n == 4:
-        stack_4.append(cargo)
+        for item in cargo:
+            stack_4.append(item)
     elif n == 5:
-        stack_5.append(cargo)
+        for item in cargo:
+            stack_5.append(item)
     elif n == 6:
-        stack_6.append(cargo)
+        for item in cargo:
+            stack_6.append(item)
     elif n == 7:
-        stack_7.append(cargo)
+        for item in cargo:
+            stack_7.append(item)
     elif n == 8:
-        stack_8.append(cargo)
+        for item in cargo:
+            stack_8.append(item)
     elif n == 9:
-        stack_9.append(cargo)
+        for item in cargo:
+            stack_9.append(item)
 
 got_empty_line = False
 for line in file.readlines():
@@ -75,7 +95,9 @@ for line in file.readlines():
 
 result = ""
 for i in range(1, 10):
-    result += pop_from_stack(i)
+    result += pop_from_stack(1, i)[0]
+
+
 
 print(result)
 
